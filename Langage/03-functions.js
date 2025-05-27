@@ -63,9 +63,10 @@ function add(a, b) {
 const sum = add(2, 3);
 console.log(`The sum is ${sum}.`); // The sum is 5.
 console.log(add(1, 2)); // 3
-// La valeur retounrée vaut l'expression qui commence à la première lettre du nom de la fonction jusqu'à la parenthèse fermante
+// La valeur retournée vaut l'expression qui commence à la première lettre du nom de la fonction jusqu'à la parenthèse fermante
 
 // On peut aussi avoir des paramètres optionnels en leur donnant une valeur par défaut.
+// ES2015
 function greetWithDefault(name = "Guest") {
   console.log(`Hello, ${name}!`);
 }
