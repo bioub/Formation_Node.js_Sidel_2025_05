@@ -25,6 +25,12 @@ console.log(greetings); // ['Hello, Alice!', 'Hello, Bob!', 'Hello, Charlie!']
 // Pour réaliser des opérations
 console.log(names.map(hello)); // ['Hello, Alice!', 'Hello, Bob!', 'Hello, Charlie!']
 
+// [                                     [
+//   'Alice',    -> (el) => hello(el) ->   'Hello, Alice!',
+//   'Bob',      -> (el) => hello(el) ->   'Hello, Bob!',
+//   'Charlie'   -> (el) => hello(el) ->   'Hello, Charlie!',
+// ]                                     ]
+
 // Souvent les callbacks sont directement déclarés au moment de l'appel de la fonction haut niveau
 // Car on ne s'en sert qu'une seule fois ici
 console.log(names.map(function(el) {

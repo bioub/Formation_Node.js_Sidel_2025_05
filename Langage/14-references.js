@@ -1,5 +1,3 @@
-const { log } = require("util");
-
 const s1 = "Jean";
 const s2 = s1;
 s2 = "Eric";
@@ -13,7 +11,8 @@ changeString(s1); // passage par valeur
 // s1 remains unchanged
 
 const o1 = { s: 'Jean' };
-const o2 = o1;
+const o2 = o1; // o1 et o2 pointent vers le même objet
+const o3 = { ...o1 }; // o3 est une copie superficielle de o1
 o2.s = 'Eric';
 
 console.log(o1.s); // Output: "Eric"

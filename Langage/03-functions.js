@@ -126,7 +126,7 @@ try {
   console.log('Pas d\'erreur...'); //
 }
 catch (error) {
-  console.error(error.message); // Name must be 'Alice' or 'Bob'.
+  // console.error(error.message); // Name must be 'Alice' or 'Bob'.
   console.log('Erreur...'); //
 }
 

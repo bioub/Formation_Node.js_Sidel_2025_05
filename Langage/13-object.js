@@ -117,6 +117,9 @@ const users = [
   }
 ];
 
+// users.length; // 2
+// users.filter(user => user.age > 20); // [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }]
+
 users.push({
   name: 'Toto',
   age: 12,
