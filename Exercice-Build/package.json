@@ -1,15 +1,12 @@
 {
+  "type": "module",
   "devDependencies": {
-    "del": "^3.0.0",
-    "fs-extra": "^4.0.2",
-    "http-server": "^0.10.0",
-    "md5": "^2.2.1",
-    "uglify-es": "^3.1.10"
+    "http-server": "^14.1.1",
+    "terser": "^5.42.0"
   },
   "scripts": {
     "serve:dev": "http-server src",
     "serve:prod": "http-server dist",
     "build": "node build.js"
-  },
-  "dependencies": {}
+  }
 }

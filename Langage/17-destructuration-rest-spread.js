@@ -18,7 +18,10 @@ const fullName = 'Romain Bohdanowicz';
 // const tmp = fullName.split(' ');
 // const prenom = tmp[0];
 // const nom = tmp[1];
-const [prenom, nom] = fullName.split(' ');
+
+//    ['Rom' , 'Boh']
+//       |       |
+const [prenom, nom  ] = fullName.split(' ');
 
 console.log(prenom); // Romain
 console.log(nom);  // Bohdanowicz
@@ -74,6 +77,7 @@ const person = {
 
 // Avec la destructuration d'objets
 //    { firstName: 'Romain'    , lastName: 'Bohdanowicz', age: 30 }
+//                    |                         |
 const { firstName: firstNameObj, lastName: lastNameObj } = person;
 
 // On peut aussi combiner avec une valeur par défaut
