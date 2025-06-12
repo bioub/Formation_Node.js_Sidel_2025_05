@@ -1,4 +1,5 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 const app = express();
 const port = 3000;
 
@@ -19,6 +20,63 @@ app.get('/', (req, res) => {
 app.get('/', (req, res) => {
   // Conflit : pas accessible car en 2e position
   res.send('Hello World 2!');
+});
+
+app.get('/with-cookie-read', cookieParser(), (req, res) => {
+  console.log(`Request received: ${req.method} ${req.url}`);
+  
+  // Lecture de tous les cookies
+  console.log('Cookies:', req.headers.cookie);
+  // req.cookies n'est disponible que si on utilise le middleware cookieParser()
+  console.log('Cookie tracking-id :', req.cookies['tracking-id']);
+  
+  res.status(200).json({
+    message: 'Hello with cookie!'
+  });
+});
+
+app.get('/with-cookie-set', cookieParser(), (req, res) => {
+  console.log(`Request received: ${req.method} ${req.url}`);
+  
+  // Définition d'un cookie
+  if (!req.cookies['tracking-id']) {
+    res.cookie('tracking-id', '1234567890', { maxAge: 900000, httpOnly: true });
+  }
+
+  res.status(200).json({
+    message: 'Cookie set!'
+  });
+});
+
+app.get('/with-ip', (req, res) => {
+  console.log(`Request received: ${req.method} ${req.url}`);
+  
+  // Lecture de l'adresse IP du client
+  // const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  // console.log('Client IP:', ip);
+  console.log('Client IP:', req.ip);
+  console.log('Client IP:', req.ips); // si proxyé, renvoie un tableau d'IPs
+  
+  res.status(200).json({
+    message: 'Hello with IP!',
+  });
+});
+
+app.get('/with-html', (req, res) => {
+  console.log(`Request received: ${req.method} ${req.url}`);
+  
+  // Envoi d'une réponse HTML
+  res.status(200).send(`
+    <html>
+      <head>
+        <title>Hello</title>
+      </head>
+      <body>
+        <h1>Hello World!</h1>
+        <p>Ip: ${req.ip}</p>
+      </body>
+    </html>
+  `);
 });
 
 // Exemple de route avec un paramètre de requête

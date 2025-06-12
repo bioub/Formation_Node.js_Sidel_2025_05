@@ -1,72 +1,39 @@
-const todos = [
-  {
-    id: 1,
-    title: 'Acheter du pain',
-    completed: false,
-  },
-  {
-    id: 2,
-    title: 'Introduire Express',
-    completed: true,
-  }
-];
+import pg from '../lib/pg.js';
 
-function generateId() {
-  const maxId = todos.reduce((acc, c) => c.id > acc ? c.id : acc, 0);
-  return maxId + 1;
+async function find() {
+  const { rows } = await pg.query('SELECT * FROM todos');
+  return rows;
 }
 
-function find() {
-  return Promise.resolve(todos);
-}
-
-function findById(id) {
+async function findById(id) {
   id = Number(id);
-  const todo = todos.find((c) => c.id === id);
+  const { rows } = await pg.query('SELECT * FROM todos WHERE id = $1', [id]);
+  return rows[0] || null;
+}
 
-  if (!todo) {
-    return Promise.resolve(null);
+async function create(todo) {
+  if (!todo.completed) {
+    todo.completed = false;
   }
 
-  return Promise.resolve(todo);
+  const { rows } = await pg.query(
+    'INSERT INTO todos (title, completed) VALUES ($1, $2) RETURNING *',
+    [todo.title, todo.completed]
+  );
+  return rows[0];
 }
 
-function create(todo) {
-  todo.id = generateId();
-
-  todos.push(todo);
-
-  return Promise.resolve(todo);
-}
-
-function findByIdAndDelete(id) {
+async function findByIdAndDelete(id) {
   id = Number(id);
-  const todo = todos.find((c) => c.id === id);
-
-  if (!todo) {
-    return Promise.resolve(null);
-  }
-
-  const index = todos.indexOf(todo);
-  todos.splice(index, 1);
-
-  return Promise.resolve(todo);
+  const { rows } = await pg.query('DELETE FROM todos WHERE id = $1 RETURNING *', [id]);
+  return rows[0] || null;
 }
 
 
-function findByIdAndUpdate(id, newTodo) {
+async function findByIdAndUpdate(id, newTodo) {
   id = Number(id);
-  const todo = todos.find((c) => c.id === id);
-  newTodo.id = id;
-
-  if (!todo) {
-    return Promise.resolve(null);
-  }
-
-  const index = todos.indexOf(todo);
-  todos[index] = newTodo;
-
-  return Promise.resolve(todo);
+  const { rows } = await pg.query('UPDATE todos SET title = $1, completed = $2 WHERE id = $3 RETURNING *', [newTodo.title, newTodo.completed, id]);
+  return rows[0] || null;
 }
 
 export {

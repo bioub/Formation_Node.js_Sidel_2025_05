@@ -17,6 +17,9 @@
 		},
 		{
 			"path": "Express-REST-Todos"
+		},
+		{
+			"path": "Express-HTML"
 		}
 	],
 	"settings": {}

@@ -10,7 +10,7 @@ const app = express();
 // Log Middleware
 app.use(morgan('dev'));
 
-// CORS Middleware (cross-domain requests)
+// CORS Middleware (cross-origin requests)
 app.use(cors());
 
 // Routes
