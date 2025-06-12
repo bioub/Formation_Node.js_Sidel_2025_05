@@ -27,6 +27,10 @@ const server = createServer((req, res) => {
 console.log(server instanceof HttpServer); // true
 console.log(server instanceof NetServer); // true
 
+// server.on('request', (req, res) => {
+//   console.log(`Request received: ${req.method} ${req.url}`);
+// });
+
 // L'event error vient de la classe Server de net
 // donc il faut aussi lire la doc de net :
 // https://nodejs.org/api/net.html#class-netserver

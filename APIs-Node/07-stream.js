@@ -77,3 +77,9 @@ import { createGzip } from 'node:zlib';
 const gzipStream = createReadStream('long-file.txt')
   .pipe(createGzip())
   .pipe(createWriteStream('long-file.txt.gz'));
+
+// cat long-file.txt | gzip > long-file.txt.gz
+
+  gzipStream.on('finish', () => {
+    console.log('File compressed successfully.');
+  });

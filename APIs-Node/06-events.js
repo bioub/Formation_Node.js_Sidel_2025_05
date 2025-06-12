@@ -7,6 +7,8 @@ process.on('uncaughtException', (err) => {
 
 import { EventEmitter } from 'node:events';
 
+console.log(process instanceof EventEmitter); // true
+
 class MyEmitter extends EventEmitter {}
 
 const myEmitter = new MyEmitter();

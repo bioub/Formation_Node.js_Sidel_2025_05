@@ -37,12 +37,13 @@ console.log('Changed working directory:', process.cwd());
 
 // Signaux
 // Processus peut écouter des signaux du système d'exploitation
+// A vérifier si le signal est supporté par le système d'exploitation
 process.on('SIGINT', () => {
   console.log('Received SIGINT (Ctrl+C). Exiting gracefully...');
   process.exit(0);
 });
 
-// IO
+// IO (Stream)
 // Processus peut lire et écrire sur les flux d'entrée/sortie standard
 process.stdin.on('data', (data) => {
   console.log(`Received data from stdin: ${data}`);

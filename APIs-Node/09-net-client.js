@@ -1,5 +1,9 @@
 import { createConnection } from 'node:net';
 
+// Le module 'net' permet de créer des connexions TCP
+// et de communiquer avec des serveurs ou des clients TCP
+// Mais aussi en IPC (Inter-Process Communication) pour communiquer entre processus Node.js
+
 // Par exemple avec net on peut se connecter à un serveur HTTP
 // et voir les messages échangés (request et response HTTP)
 const socket = createConnection({ port: 80, host: 'www.example.com' }, () => {

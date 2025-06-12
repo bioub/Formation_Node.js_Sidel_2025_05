@@ -1,4 +1,4 @@
-import { exec } from 'node:child_process';
+import { exec, fork } from 'node:child_process';
 import { promisify } from 'node:util';
 
 // Pour utiliser exec avec await, 2 options sont possibles :
@@ -9,3 +9,4 @@ const execAsync = promisify(exec);
 
 const { stdout, stderr } = await execAsync('node --version');
 console.log('Node.js version:', stdout.trim());
+

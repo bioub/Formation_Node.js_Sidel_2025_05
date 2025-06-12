@@ -265,3 +265,49 @@ console.log(String.fromCharCode(65, 66, 67)); // 'ABC' static method
 
 // Tester le type
 console.log(person1 instanceof Person); // true
+
+
+const user = {
+  name: 'John',
+  age: 30,
+};
+
+const newUser = {
+  age: 25,
+  email: 'jane@example.com'
+};
+
+// On aimerait fusionner les 2 objets
+// {
+//   name: 'John',
+//   age: 25,
+//   email: 'jane@example.com'
+// }
+
+// On peut utiliser Object.assign pour fusionner les objets
+const mergedUser = Object.assign({}, user, newUser);
+console.log(mergedUser); // { name: 'John', age: 25, email: 'jane@example.com' }
+
+// Object.assign modifie le premier objet passé en paramètre -> PATCH
+Object.assign(user, newUser);
+console.log(user); // { name: 'John', age: 25, email: 'jane@example.com' }
+
+// On peut aussi boucler sur les propriétés d'un objet
+for (const key in user) {
+  console.log(`${key}: ${user[key]}`); // name: John, age: 25, email:
+}
+
+// De façon plus moderne, on peut utiliser Object.entries pour obtenir un tableau de paires clé/valeur
+for (const [key, value] of Object.entries(user)) {
+  console.log(`${key}: ${value}`); // name: John, age: 25, email: jane@example.com
+}
+// On peut aussi utiliser Object.keys pour obtenir un tableau des clés de l'objet
+for (const key of Object.keys(user)) {
+  console.log(key); // name, age, email
+}
+
+// PUT
+const newUser2 = {
+  ...user, // avec les valeur du body
+  id: 1, // avec la valeur de l'URL
+}

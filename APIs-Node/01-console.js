@@ -10,3 +10,10 @@ console.time('Execution Time');
 setTimeout(() => {
   console.timeEnd('Execution Time'); // Execution Time: 1.002s
 }, 1000);
+
+console.group('Grouped Messages');
+console.log('This is a message inside a group');
+console.log('Another message inside the group');
+console.groupEnd();
+
+console.table([{ name: 'Alice', age: 30 }, { name: 'Bob', age: 25 }]);
