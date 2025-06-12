@@ -1,8 +1,7 @@
 import { Pool } from "pg";
-import config from "../config/index.js";
 
 const pool = new Pool({
-  connectionString: config.databaseUrl,
+  connectionString: process.env.DATABASE_URL,
 });
 
 export default pool;

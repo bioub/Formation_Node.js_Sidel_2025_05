@@ -20,6 +20,9 @@
 		},
 		{
 			"path": "Express-HTML"
+		},
+		{
+			"path": "Tests-Automatises"
 		}
 	],
 	"settings": {}

@@ -2,7 +2,7 @@
 // Objectif : Utiliser plusieurs paramètres pour un calcul simple.
 // Énoncé : Créez une fonction nommée calculerAireRectangle qui prend deux paramètres : longueur et largeur. La fonction doit retourner l'aire du rectangle (longueur * largeur).
 // Exemple d'appel : console.log(calculerAireRectangle(10, 4)); devrait afficher 40.
-function calculerAireRectangle(longueur, largeur) {
+export function calculerAireRectangle(longueur, largeur) {
     return longueur * largeur;
 }
 
@@ -13,7 +13,7 @@ function calculerAireRectangle(longueur, largeur) {
 // Exemple d'appel :
 // console.log(estPair(4)); devrait afficher true.
 // console.log(estPair(7)); devrait afficher false.
-function estPair(nombre) {
+export function estPair(nombre) {
     return nombre % 2 === 0;
 }
 
@@ -27,7 +27,7 @@ function estPair(nombre) {
 // console.log(saluerAvecLangue("Bob")); devrait afficher "Bonjour, Bob !".
 // console.log(saluerAvecLangue("Charlie", "en")); devrait afficher "Hello, Charlie!".
 // console.log(saluerAvecLangue("David", "es")); devrait afficher "Salutations, David !".
-function saluerAvecLangue(nom, langue = "fr") {
+export function saluerAvecLangue(nom, langue = "fr") {
     if (langue === "fr") {
         return `Bonjour, ${nom} !`;
     } else if (langue === "en") {
@@ -45,7 +45,7 @@ function saluerAvecLangue(nom, langue = "fr") {
 // Exemple d'appel
 // console.log(calculerMoyenne(10, 20, 30)); devrait afficher 20.
 // console.log(calculerMoyenne(5, 10, "quinze")); devrait afficher null.
-function calculerMoyenne(n1, n2, n3) {
+export function calculerMoyenne(n1, n2, n3) {
     if (typeof n1 !== "number" || typeof n2 !== "number" || typeof n3 !== "number") {
         return null;
     }
@@ -63,7 +63,7 @@ function calculerMoyenne(n1, n2, n3) {
 // console.log(calculatriceSimple(10, 5, '/')); devrait afficher 2.
 // console.log(calculatriceSimple(10, 0, '/')); devrait afficher "Erreur: Division par zéro".
 // console.log(calculatriceSimple(10, 5, '%')); pourrait afficher null ou undefined.
-function calculatriceSimple(nombre1, nombre2, operation) {
+export function calculatriceSimple(nombre1, nombre2, operation) {
     switch (operation) {
         case '+':
             return nombre1 + nombre2;
@@ -91,7 +91,7 @@ function calculatriceSimple(nombre1, nombre2, operation) {
 // console.log(estPalindrome("radar")); devrait afficher true.
 // console.log(estPalindrome("bonjour")); devrait afficher false.
 // console.log(estPalindrome("ressasser")); devrait afficher true.
-function estPalindrome(chaine) {
+export function estPalindrome(chaine) {
     // Version simple : ignore la casse et les espaces
     const chaineNettoyee = chaine.replace(/\s+/g, '').toLowerCase();
     const chaineInversee = chaineNettoyee.split('').reverse().join('');
